@@ -22,12 +22,10 @@ export default function Page() {
     );
   };
 
-  // 선택된 이름 배열
   const selectedNames = users
     .filter((user) => checked.includes(user.id))
     .map((user) => user.name);
 
-  // 조건에 따른 표시 텍스트
   let displayText = "없음";
   if (selectedNames.length === 1) {
     displayText = selectedNames[0];
@@ -36,9 +34,28 @@ export default function Page() {
   }
 
   return (
-    <div>
-      <h2>회원 목록</h2>
-      <div>
+    <div
+      style={{
+        maxWidth: 400,
+        margin: "40px auto",
+        padding: 24,
+        borderRadius: 16,
+        background: "#f9fafb",
+        boxShadow: "0 4px 16px rgba(0,0,0,0.08)",
+      }}
+    >
+      <h2 style={{ textAlign: "center", color: "#333", marginBottom: 24 }}>
+        회원 목록
+      </h2>
+      <div
+        style={{
+          fontWeight: 600,
+          fontSize: 18,
+          color: "#1976d2",
+          marginBottom: 12,
+          textAlign: "center",
+        }}
+      >
         {!users || users.length === 0
           ? "회원"
           : users.length === 1
@@ -46,25 +63,73 @@ export default function Page() {
           : `${users.length}명`}
       </div>
       {!users || users.length === 0 ? (
-        <div>회원</div>
+        <div style={{ textAlign: "center", color: "#aaa", margin: "24px 0" }}>
+          회원
+        </div>
       ) : (
-        <ul>
+        <ul style={{ listStyle: "none", padding: 0, marginBottom: 24 }}>
           {users.map((user) => (
-            <li key={user.id}>
-              <label>
+            <li
+              key={user.id}
+              style={{
+                marginBottom: 12,
+                background: checked.includes(user.id) ? "#e3f2fd" : "#fff",
+                borderRadius: 8,
+                padding: "8px 12px",
+                transition: "background 0.2s",
+              }}
+            >
+              <label
+                style={{
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
                 <input
                   type="checkbox"
                   checked={checked.includes(user.id)}
                   onChange={() => handleCheck(user.id)}
+                  style={{ marginRight: 10, accentColor: "#1976d2" }}
                 />
-                {user.name}
+                <span
+                  style={{
+                    fontWeight: checked.includes(user.id) ? 700 : 400,
+                    color: checked.includes(user.id) ? "#1976d2" : "#333",
+                  }}
+                >
+                  {user.name}
+                </span>
               </label>
             </li>
           ))}
         </ul>
       )}
-      <h3>선택된 회원</h3>
-      <div>{displayText}</div>
+      <div
+        style={{
+          background: "#fff",
+          borderRadius: 8,
+          padding: "16px 0",
+          textAlign: "center",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+        }}
+      >
+        <h3
+          style={{ margin: 0, color: "#1976d2", fontWeight: 700, fontSize: 18 }}
+        >
+          선택된 회원
+        </h3>
+        <div
+          style={{
+            marginTop: 8,
+            fontSize: 16,
+            color: displayText === "없음" ? "#aaa" : "#333",
+            fontWeight: displayText === "없음" ? 400 : 600,
+          }}
+        >
+          {displayText}
+        </div>
+      </div>
     </div>
   );
 }
