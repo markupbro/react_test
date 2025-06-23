@@ -1,95 +1,70 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import React, { useState } from "react";
 
-export default function Home() {
+const initialUsers = [
+  { id: 1, name: "홍길동" },
+  { id: 2, name: "김철수" },
+  { id: 3, name: "이영희" },
+];
+
+export default function Page() {
+  const [users] = useState(initialUsers);
+  const [checked, setChecked] = useState<number[]>([]);
+
+  const handleCheck = (userId: number) => {
+    setChecked((prev) =>
+      prev.includes(userId)
+        ? prev.filter((id) => id !== userId)
+        : [...prev, userId]
+    );
+  };
+
+  // 선택된 이름 배열
+  const selectedNames = users
+    .filter((user) => checked.includes(user.id))
+    .map((user) => user.name);
+
+  // 조건에 따른 표시 텍스트
+  let displayText = "없음";
+  if (selectedNames.length === 1) {
+    displayText = selectedNames[0];
+  } else if (selectedNames.length > 1) {
+    displayText = `${selectedNames.length}명`;
+  }
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+    <div>
+      <h2>회원 목록</h2>
+      <div>
+        {!users || users.length === 0
+          ? "회원"
+          : users.length === 1
+          ? users.map((user) => user.name)
+          : `${users.length}명`}
+      </div>
+      {!users || users.length === 0 ? (
+        <div>회원</div>
+      ) : (
+        <ul>
+          {users.map((user) => (
+            <li key={user.id}>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={checked.includes(user.id)}
+                  onChange={() => handleCheck(user.id)}
+                />
+                {user.name}
+              </label>
+            </li>
+          ))}
+        </ul>
+      )}
+      <h3>선택된 회원</h3>
+      <div>{displayText}</div>
     </div>
   );
 }
