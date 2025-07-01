@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 import React, { useState } from "react";
+import Input from "@/app/common/Input";
 
 const initialUsers = [
   { id: 1, name: "홍길동" },

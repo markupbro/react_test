@@ -1,0 +1,10 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(18, 1fr);
+  width: 100%;
+  margin: 5px 0;
+}
+
+.gridItem {
+  min-width: 0;
+}

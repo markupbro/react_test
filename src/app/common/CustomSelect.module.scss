@@ -1,0 +1,124 @@
+/* SmartSelect.module.scss */
+.wrapper {
+  position: relative;
+  // margin-bottom: 16px;
+  /* size 옵션 */
+  &.sm {
+    height: 26px;
+    font-size: 12px;
+    padding: 4px 32px 4px 8px;
+    .selectBox {
+      font-size: inherit;
+    }
+  }
+  &.md {
+    height: 32px;
+    font-size: 13px;
+    padding: 8px 36px 8px 12px;
+  }
+  &.lg {
+    height: 40px;
+    font-size: 14px;
+    padding: 12px 40px 12px 16px;
+  }
+  .label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #333;
+  }
+  .requiredMark {
+    color: #e53935;
+    margin-left: 4px;
+  }
+  .selectBox {
+    width: 100%;
+    min-width: 120px;
+    text-align: left;
+    border: 1.5px solid #bdbdbd;
+    border-radius: 6px;
+    background: #fff;
+    color: #333;
+    cursor: pointer;
+    position: relative;
+    transition: border 0.2s;
+    outline: none;
+    appearance: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 36px 8px 12px;
+    // font-size: 16px;
+  }
+  .selectBox:focus {
+    border-color: #1976d2;
+  }
+  .errorSelect {
+    border-color: #e53935;
+  }
+  .selected {
+    color: #222;
+  }
+  .placeholder {
+    color: #aaa;
+  }
+  .arrow {
+    position: absolute;
+    right: 12px;
+    pointer-events: none;
+    font-size: 0.75rem;
+  }
+  .dropdown {
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    top: 100%;
+    margin-top: 4px;
+    background: #fff;
+    border: 1.5px solid #bdbdbd;
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    max-height: 220px;
+    overflow-y: auto;
+    padding: 4px 0;
+    animation: fadeIn 0.15s;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .option {
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: inherit;
+    color: #333;
+    background: #fff;
+    transition: background 0.15s;
+    outline: none;
+    &:hover,
+    &.focusedOption {
+      background: #e3f2fd;
+    }
+  }
+  .selectedOption {
+    background: #e3f2fd;
+    font-weight: 600;
+  }
+  .disabledOption {
+    color: #bbb;
+    cursor: not-allowed;
+    background: #f5f5f5;
+  }
+  .error {
+    color: #e53935;
+    font-size: 13px;
+    margin-top: 4px;
+  }
+}
