@@ -165,7 +165,7 @@ const UiGuide = () => {
             <p>
               <b>Input Group</b>
             </p>
-            <InputGroupWrap className="border-ex">
+            <InputGroupWrap>
               <Input
                 id="ip1"
                 type="text"
@@ -203,7 +203,7 @@ const UiGuide = () => {
         </Grid>
         <Grid columns={18} gap={3}>
           <GridItem span={9}>
-            <InputGroupWrap>
+            <InputGroupWrap direction={""}>
               <CustomSelect
                 label="국가"
                 options={[
@@ -243,6 +243,7 @@ const UiGuide = () => {
                 value={country3}
                 onChange={(value) => setCountry3(String(value))}
                 size="lg"
+                required
                 error={country3Error}
               />
             </InputGroupWrap>
@@ -255,6 +256,12 @@ const UiGuide = () => {
         <p>사용자 선택을 위한 체크박스 컴포넌트입니다.</p>
         <Grid columns={18} gap={3}>
           <GridItem span={8}>
+            <Checkbox
+              id="agree-checkbox"
+              label="동의합니다"
+              checked={checked}
+              onChange={setChecked}
+            />
             <Checkbox
               id="agree-checkbox"
               label="동의합니다"

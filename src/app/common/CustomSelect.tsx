@@ -1,3 +1,4 @@
+"use client";
 import React, { useRef, useState, useEffect } from "react";
 import styles from "./CustomSelect.module.scss";
 
@@ -133,7 +134,10 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
     touched && ((required && isValueEmpty) || (!!error && !required));
 
   return (
-    <div className={`${styles.wrapper} ${size} ${className}`} ref={wrapperRef}>
+    <div
+      className={`${styles.wrapper} ${styles[size]} ${className}`}
+      ref={wrapperRef}
+    >
       {label && (
         <label className={styles.label} htmlFor={id}>
           {label}

@@ -1,4 +1,5 @@
 import React from "react";
+import "./CheckBox.scss";
 
 export interface CheckboxProps {
   label: React.ReactNode;
@@ -20,10 +21,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
   className = "",
 }) => {
   return (
-    <label
-      className={className}
-      style={{ display: "inline-flex", alignItems: "center", gap: 6 }}
-    >
+    <label className={className}>
       <input
         type="checkbox"
         checked={checked}
@@ -31,7 +29,6 @@ const Checkbox: React.FC<CheckboxProps> = ({
         value={value}
         disabled={disabled}
         id={id}
-        style={{ marginRight: 4 }}
       />
       {label}
     </label>
