@@ -1,28 +1,27 @@
 import React from "react";
-import styles from "./CheckBox.module.scss";
+import styles from "./Radio.module.scss";
 
-interface CheckboxProps {
+interface RadioProps {
   label: React.ReactNode;
   checked: boolean;
-  onChange: (checked: boolean) => void;
+  onChange: () => void;
   value?: string;
   disabled?: boolean;
   id?: string;
+  name?: string;
   className?: string;
 }
 
-const Checkbox: React.FC<CheckboxProps> = ({
+const Radio: React.FC<RadioProps> = ({
   label,
   checked,
   onChange,
   value,
   disabled = false,
   id,
+  name,
   className = "",
 }) => {
-  const disabledClass = disabled ? "disabled" : "";
-  console.log(styles);
-
   return (
     <label
       className={`${styles.label} ${className} ${
@@ -30,16 +29,17 @@ const Checkbox: React.FC<CheckboxProps> = ({
       }`}
     >
       <input
-        type="checkbox"
+        type="radio"
         checked={checked}
-        onChange={(e) => onChange(e.target.checked)}
+        onChange={onChange}
         value={value}
-        disabled={disabled}
+        name={name}
         id={id}
+        disabled={disabled}
       />
       {label}
     </label>
   );
 };
 
-export default Checkbox;
+export default Radio;

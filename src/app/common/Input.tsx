@@ -16,7 +16,6 @@ export interface InputProps
 export interface InputGroupProps {
   children: React.ReactNode;
   className?: string;
-  direction?: string;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -65,14 +64,9 @@ const Input: React.FC<InputProps> = ({
 export const InputGroupWrap: React.FC<InputGroupProps> = ({
   children,
   className,
-  direction,
 }) => {
   return (
-    <div
-      className={`${styles["group-wrapper"]} ${
-        direction ? styles[direction] : ""
-      } ${className || ""}`}
-    >
+    <div className={`${styles["group-wrapper"]} ${className || ""}`}>
       {children}
     </div>
   );

@@ -6,12 +6,31 @@ import Button from "../common/Button";
 import { Grid, GridItem } from "../common/layout/Grid";
 import CustomSelect from "../common/CustomSelect";
 import Checkbox from "../common/CheckBox";
+import Radio from "../common/Radio";
 
 const fruitOptions = [
   { value: "apple", label: "사과" },
   { value: "banana", label: "바나나" },
   { value: "orange", label: "오렌지" },
   { value: "grape", label: "포도" },
+];
+const jobOptions = [
+  { value: "devloper", label: "개발자" },
+  { value: "ceo", label: "대표자", disabled: true },
+  { value: "engineer", label: "엔지니어" },
+  { value: "officer", label: "경찰" },
+];
+const radioOptions = [
+  { value: "radio1", label: "라디오1" },
+  { value: "radio2", label: "라디오2" },
+  { value: "radio3", label: "라디오3", disabled: true },
+  { value: "radio4", label: "라디오4" },
+];
+const radioOptions2 = [
+  { value: "radio1", label: "라디오1" },
+  { value: "radio2", label: "라디오2" },
+  { value: "radio3", label: "라디오3", disabled: true },
+  { value: "radio4", label: "라디오4" },
 ];
 
 const UiGuide = () => {
@@ -28,13 +47,33 @@ const UiGuide = () => {
   const [country3Error, setCountry3Error] = useState("");
 
   const [checked, setChecked] = useState(false);
+  const [checked2, setChecked2] = useState(true);
+  const [checked3, setChecked3] = useState(false);
+  const [checked4, setChecked4] = useState(false);
+  const [checked5, setChecked5] = useState(false);
+  const [checked6, setChecked6] = useState(false);
   const [selected, setSelected] = useState<string[]>([]);
+  const [selected2, setSelected2] = useState<string[]>([]);
+  const [selected3, setSelected3] = useState<string>("");
+  const [selected4, setSelected4] = useState<string>("");
+  const [selected5, setSelected5] = useState<string>("");
 
   const handleChange = (value: string, checked: boolean) => {
     setSelected((prev) =>
       checked ? [...prev, value] : prev.filter((v) => v !== value)
     );
   };
+  const handleChange2 = (value: string, checked: boolean) => {
+    setSelected2((prev) =>
+      checked ? [...prev, value] : prev.filter((v) => v !== value)
+    );
+  };
+  // const handleChange3 = (value: string, checked: boolean) => {
+  //   setSelected3((prev) =>
+  //     checked ? [...prev, value] : prev.filter((v) => v !== value)
+  //   );
+  // };
+
   return (
     <div>
       <p style={{ fontSize: 18, lineHeight: 1.6, color: "#555" }}>
@@ -203,7 +242,7 @@ const UiGuide = () => {
         </Grid>
         <Grid columns={18} gap={3}>
           <GridItem span={9}>
-            <InputGroupWrap direction={""}>
+            <InputGroupWrap>
               <CustomSelect
                 label="국가"
                 options={[
@@ -258,18 +297,25 @@ const UiGuide = () => {
           <GridItem span={8}>
             <Checkbox
               id="agree-checkbox"
-              label="동의합니다"
+              label="산택항목"
               checked={checked}
               onChange={setChecked}
             />
             <Checkbox
-              id="agree-checkbox"
-              label="동의합니다"
-              checked={checked}
-              onChange={setChecked}
+              id="agree-checkbox2"
+              label="선택항목"
+              checked={checked2}
+              onChange={setChecked2}
+            />
+            <Checkbox
+              id="agree-checkbox3"
+              label="선택항목"
+              checked={checked3}
+              onChange={setChecked3}
+              disabled
             />
             <div style={{ marginTop: 8 }}>
-              상태: {checked ? "체크됨" : "체크 안됨"}
+              상태: {checked || checked2 ? "체크됨" : "체크 안됨"}
             </div>
           </GridItem>
           <GridItem span={8}>
@@ -282,12 +328,94 @@ const UiGuide = () => {
                 value={opt.value}
               />
             ))}
-            <div style={{ marginTop: 12 }}>
+            <div style={{ marginTop: 8 }}>
               선택된 과일: {selected.length > 0 ? selected.join(", ") : "없음"}
             </div>
           </GridItem>
-          <GridItem span={6}></GridItem>
-          <GridItem span={6}></GridItem>
+          <GridItem span={18}>
+            <InputGroupWrap>
+              {jobOptions.map((opt) => (
+                <Checkbox
+                  key={opt.value}
+                  label={opt.label}
+                  checked={selected2.includes(opt.value)}
+                  onChange={(checked) => handleChange2(opt.value, checked)}
+                  value={opt.value}
+                  disabled={opt.disabled}
+                />
+              ))}
+            </InputGroupWrap>
+            <div style={{ marginTop: 12 }}>
+              선택된 직업:{" "}
+              {selected2.length > 0 ? selected2.join(", ") : "없음"}
+            </div>
+          </GridItem>
+        </Grid>
+      </section>
+
+      <section className={styles.section}>
+        <h2>Radio</h2>
+        <p></p>
+        <Grid columns={18} gap={3}>
+          <GridItem span={8}>
+            <Radio
+              id="radio"
+              name="r1"
+              label="선택항목1"
+              checked={selected3 === "radio"}
+              onChange={() => setSelected3("radio")}
+            />
+            <Radio
+              id="radio2"
+              name="r1"
+              label="선택항목2"
+              checked={selected3 === "radio2"}
+              onChange={() => setSelected3("radio2")}
+            />
+            <Radio
+              id="radio3"
+              name="r1"
+              label="선택항목3"
+              checked={selected3 === "radio3"}
+              onChange={() => setSelected3("radio3")}
+              disabled
+            />
+            <div style={{ marginTop: 8 }}>
+              상태: {selected3 ? "체크됨" : "체크 안됨"}
+            </div>
+          </GridItem>
+          <GridItem span={8}>
+            {radioOptions.map((opt) => (
+              <Radio
+                key={opt.value}
+                label={opt.label}
+                checked={selected4 === opt.value}
+                onChange={() => setSelected4(opt.value)}
+                value={opt.value}
+                name="radiogroup"
+              />
+            ))}
+            <div style={{ marginTop: 12 }}>
+              선택된 과일: {selected4 || "없음"}
+            </div>
+          </GridItem>
+          <GridItem span={18}>
+            <InputGroupWrap>
+              {radioOptions2.map((opt) => (
+                <Radio
+                  key={opt.value}
+                  label={opt.label}
+                  checked={selected5 === opt.value}
+                  onChange={() => setSelected5(opt.value)}
+                  value={opt.value}
+                  name="radiogroup2"
+                />
+              ))}
+            </InputGroupWrap>
+            <div style={{ marginTop: 12 }}>
+              선택된 과일: {selected5 || "없음"}
+            </div>
+          </GridItem>
         </Grid>
       </section>
 
