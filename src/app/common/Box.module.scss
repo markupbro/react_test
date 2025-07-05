@@ -1,0 +1,35 @@
+.box-wrap {
+  position: relative;
+  overflow: hidden;
+  // &.color {
+  //   background: #ccc;
+  // }
+  &.primary {
+    background: #1976d2;
+  }
+  &.secondary {
+    background: #e0e0e0;
+  }
+  &.dark {
+    background: #666;
+    color: #fff;
+  }
+  &.r4 {
+    border-radius: 4px;
+  }
+  &.r8 {
+    border-radius: 8px;
+  }
+  &.r16 {
+    border-radius: 16px;
+  }
+  &.p10 {
+    padding: 10px 18px;
+  }
+  &.p20 {
+    padding: 20px 28px;
+  }
+  &.p30 {
+    padding: 30px 38px;
+  }
+}

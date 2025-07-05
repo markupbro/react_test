@@ -7,6 +7,8 @@ import { Grid, GridItem } from "../common/layout/Grid";
 import CustomSelect from "../common/CustomSelect";
 import Checkbox from "../common/CheckBox";
 import Radio from "../common/Radio";
+import Box from "../common/Box";
+import Textarea from "../common/Textarea";
 
 const fruitOptions = [
   { value: "apple", label: "사과" },
@@ -57,6 +59,9 @@ const UiGuide = () => {
   const [selected3, setSelected3] = useState<string>("");
   const [selected4, setSelected4] = useState<string>("");
   const [selected5, setSelected5] = useState<string>("");
+
+  const [desc, setDesc] = useState("");
+  const [descError, setDescError] = useState("");
 
   const handleChange = (value: string, checked: boolean) => {
     setSelected((prev) =>
@@ -159,7 +164,7 @@ const UiGuide = () => {
       <section className={styles.section}>
         <h2>Input</h2>
         <p>사용자 입력을 받기 위한 기본 컴포넌트입니다.</p>
-        <Grid columns={18} gap={3}>
+        <Grid>
           <GridItem span={6}>
             <Input
               id="name-input"
@@ -196,12 +201,13 @@ const UiGuide = () => {
               onChange={(e) => setValue(e.target.value)}
               onBlur={() => setError(value ? "" : "이름을 입력해주세요")}
               error={error}
+              required
             />
           </GridItem>
         </Grid>
         <Grid>
           <GridItem span={18}>
-            <p className={styles["mt-3"]}>
+            <p className={styles["mt-2"]}>
               <b>Input Group</b>
             </p>
             <InputGroupWrap alingItem="end">
@@ -214,6 +220,7 @@ const UiGuide = () => {
                 onChange={(e) => setValue(e.target.value)}
                 onBlur={() => setError(value ? "" : "입력해주세요")}
                 error={error}
+                required
               />
               <Input
                 id="ip2"
@@ -283,7 +290,6 @@ const UiGuide = () => {
                 value={country3}
                 onChange={(value) => setCountry3(String(value))}
                 size="lg"
-                required
                 error={country3Error}
               />
             </InputGroupWrap>
@@ -344,6 +350,43 @@ const UiGuide = () => {
             </InputGroupWrap>
           </GridItem>
         </Grid>
+        <Grid gap={3}>
+          <GridItem span={6}>
+            <Textarea
+              id="txa"
+              label="설명"
+              size="sm"
+              value={desc}
+              onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                setDesc(e.target.value)
+              }
+              required
+              error={descError}
+            />
+          </GridItem>
+          <GridItem span={6}>
+            <Textarea
+              id="txa2"
+              label="설명"
+              size="md"
+              value={desc}
+              onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                setDesc(e.target.value)
+              }
+            />
+          </GridItem>
+          <GridItem span={6}>
+            <Textarea
+              id="txa2"
+              label="설명"
+              size="lg"
+              value={desc}
+              onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                setDesc(e.target.value)
+              }
+            />
+          </GridItem>
+        </Grid>
       </section>
 
       <section className={styles.section}>
@@ -401,7 +444,7 @@ const UiGuide = () => {
                 />
               ))}
             </InputGroupWrap>
-            <div style={{ marginTop: 12 }}>
+            <div style={{ marginTop: 8 }}>
               선택된 직업:{" "}
               {selected2.length > 0 ? selected2.join(", ") : "없음"}
             </div>
@@ -618,6 +661,74 @@ const UiGuide = () => {
             <div className={styles.ex}>
               <b>Item 2</b>
             </div>
+          </GridItem>
+        </Grid>
+        <Grid>
+          <GridItem span={3}>
+            <div className={styles.ex}>
+              <b>Item 2</b>
+            </div>
+          </GridItem>
+          <GridItem span={3}>
+            <div className={styles.ex}>
+              <b>Item 2</b>
+            </div>
+          </GridItem>
+          <GridItem span={3}>
+            <div className={styles.ex}>
+              <b>Item 2</b>
+            </div>
+          </GridItem>
+          <GridItem span={3}>
+            <div className={styles.ex}>
+              <b>Item 2</b>
+            </div>
+          </GridItem>
+          <GridItem span={3}>
+            <div className={styles.ex}>
+              <b>Item 2</b>
+            </div>
+          </GridItem>
+          <GridItem span={3}>
+            <div className={styles.ex}>
+              <b>Item 2</b>
+            </div>
+          </GridItem>
+        </Grid>
+      </section>
+      <section className={styles.section}>
+        <h2>Box</h2>
+        <p>요소를 감싸는 Box 형태의 wrap 시스템입니다.</p>
+        <Grid columns={18} gap={5}>
+          <GridItem span={6}>
+            <Box color="primary" radius="r8" p="p10">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit
+                numquam veniam quo deleniti optio rem, reprehenderit nam.
+                Tenetur, facere a dolor cumque quae dolore ratione enim at
+                tempore voluptates. Quas, ratione reiciendis aut vel sit itaque
+                atem, a veniam illum quibusdam omnis
+              </p>
+            </Box>
+          </GridItem>
+          <GridItem span={6}>
+            <Box color="dark" radius="r4" p="p20">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit
+                numquam veniam quo deleniti optio rem, reprehenderit nam.
+                Tenetur, facere a dolor cumque quae dolore ratione enim at
+                tempore voluptates. Quas,
+              </p>
+            </Box>
+          </GridItem>
+          <GridItem span={6}>
+            <Box color="secondary" radius="r16" p="p30">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit
+                numquam veniam quo deleniti optio rem, reprehenderit nam.
+                Tenetur, facere a dolor cumque quae dolore ratione enim at
+              </p>
+            </Box>
           </GridItem>
         </Grid>
       </section>

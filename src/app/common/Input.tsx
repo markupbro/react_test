@@ -11,6 +11,7 @@ export interface InputProps
   labelClassName?: string;
   inputClassName?: string;
   errorClassName?: string;
+  required?: boolean;
 }
 
 export interface InputGroupProps {
@@ -28,8 +29,10 @@ const Input: React.FC<InputProps> = ({
   labelClassName,
   inputClassName,
   errorClassName,
+  required = false,
   ...props
 }) => {
+  console.log(required);
   return (
     <div
       className={`${styles.wrapper} ${styles[inputSize]} ${
@@ -42,6 +45,7 @@ const Input: React.FC<InputProps> = ({
           className={`${styles.label} ${labelClassName || ""}`}
         >
           {label}
+          {required && <span className={styles.requiredMark}>*</span>}
         </label>
       )}
       {/* {error && errorPosition === "top" && (
@@ -50,13 +54,21 @@ const Input: React.FC<InputProps> = ({
       <input
         className={`
           ${styles.input}
-          ${error ? styles.errorInput : ""}
+          ${required && error ? styles.errorInput : ""}
           ${inputClassName || ""}
         `}
         {...props}
       />
-      {error && errorPosition === "bottom" && (
-        <div className={`${styles.error} ${errorClassName || ""}`}>{error}</div>
+      {required ? (
+        <>
+          {error && errorPosition === "bottom" && (
+            <div className={`${styles.error} ${errorClassName || ""}`}>
+              {error}
+            </div>
+          )}
+        </>
+      ) : (
+        ""
       )}
     </div>
   );
