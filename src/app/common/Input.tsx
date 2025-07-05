@@ -16,6 +16,7 @@ export interface InputProps
 export interface InputGroupProps {
   children: React.ReactNode;
   className?: string;
+  alingItem?: string;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -43,9 +44,9 @@ const Input: React.FC<InputProps> = ({
           {label}
         </label>
       )}
-      {error && errorPosition === "top" && (
+      {/* {error && errorPosition === "top" && (
         <div className={`${styles.error} ${errorClassName || ""}`}>{error}</div>
-      )}
+      )} */}
       <input
         className={`
           ${styles.input}
@@ -64,9 +65,14 @@ const Input: React.FC<InputProps> = ({
 export const InputGroupWrap: React.FC<InputGroupProps> = ({
   children,
   className,
+  alingItem,
 }) => {
   return (
-    <div className={`${styles["group-wrapper"]} ${className || ""}`}>
+    <div
+      className={`${styles["group-wrapper"]} ${alingItem ? styles.end : ""} ${
+        className || ""
+      }`}
+    >
       {children}
     </div>
   );

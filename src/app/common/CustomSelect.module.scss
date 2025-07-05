@@ -1,6 +1,6 @@
 .wrapper {
   position: relative;
-  // margin-bottom: 16px;
+  // margin: 4px;
 
   .label {
     display: block;
@@ -99,7 +99,7 @@
   }
   .error {
     position: absolute;
-    bottom: 0;
+    bottom: -38%;
     color: #e53935;
     font-size: 13px;
     margin-top: 4px;
@@ -119,7 +119,6 @@
     top: 73%;
   }
   .error {
-    bottom: -5px;
     font-size: inherit;
   }
 }
@@ -134,7 +133,6 @@
     top: 80%;
   }
   .error {
-    bottom: -10px;
     font-size: inherit;
   }
 }
@@ -149,7 +147,6 @@
     top: 95%;
   }
   .error {
-    bottom: -20px;
     font-size: inherit;
   }
 }

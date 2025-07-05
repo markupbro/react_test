@@ -201,10 +201,10 @@ const UiGuide = () => {
         </Grid>
         <Grid>
           <GridItem span={18}>
-            <p>
+            <p className={styles["mt-3"]}>
               <b>Input Group</b>
             </p>
-            <InputGroupWrap>
+            <InputGroupWrap alingItem="end">
               <Input
                 id="ip1"
                 type="text"
@@ -237,6 +237,7 @@ const UiGuide = () => {
                 error={error}
                 style={{ width: "360px" }}
               />
+              <Button variant="secondary">Medium 버튼</Button>
             </InputGroupWrap>
           </GridItem>
         </Grid>
@@ -285,6 +286,61 @@ const UiGuide = () => {
                 required
                 error={country3Error}
               />
+            </InputGroupWrap>
+          </GridItem>
+        </Grid>
+        <Grid columns={18} gap={3}>
+          <GridItem span={9}>
+            <InputGroupWrap alingItem="end">
+              <Input
+                id="name-input"
+                type="text"
+                label="Input+Button Group"
+                placeholder="이름을 입력하세요"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+                onBlur={() => setError(value ? "" : "이름을 입력해주세요")}
+                error={error}
+              />
+              <Button>Medium 버튼</Button>
+            </InputGroupWrap>
+          </GridItem>
+          <GridItem span={9}>
+            <InputGroupWrap alingItem="end">
+              <CustomSelect
+                label="국가"
+                options={[
+                  { value: "", label: "선택하세요" },
+                  { value: "kr", label: "대한민국" },
+                  { value: "us", label: "미국" },
+                  { value: "jp", label: "일본" },
+                ]}
+                value={country3}
+                onChange={(value) => setCountry3(String(value))}
+                size="md"
+                required
+                error={country3Error}
+              />
+              <Button variant="secondary">Medium 버튼</Button>
+            </InputGroupWrap>
+          </GridItem>
+          <GridItem span={9}>
+            <InputGroupWrap alingItem="end">
+              <Input
+                id="name-input"
+                type="text"
+                label="Input+Button Group"
+                placeholder="이름을 입력하세요"
+                inputSize="sm"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+                onBlur={() => setError(value ? "" : "이름을 입력해주세요")}
+                error={error}
+              />
+              <Button size="sm">Medium 버튼</Button>
+              <Button size="sm" variant="outline">
+                Medium 버튼
+              </Button>
             </InputGroupWrap>
           </GridItem>
         </Grid>
@@ -355,6 +411,7 @@ const UiGuide = () => {
 
       <section className={styles.section}>
         <h2>Radio</h2>
+        <p>사용자 선택을 위한 라디오 컴포넌트입니다.</p>
         <p></p>
         <Grid columns={18} gap={3}>
           <GridItem span={8}>
@@ -393,6 +450,7 @@ const UiGuide = () => {
                 onChange={() => setSelected4(opt.value)}
                 value={opt.value}
                 name="radiogroup"
+                disabled={opt.disabled}
               />
             ))}
             <div style={{ marginTop: 12 }}>
@@ -409,6 +467,7 @@ const UiGuide = () => {
                   onChange={() => setSelected5(opt.value)}
                   value={opt.value}
                   name="radiogroup2"
+                  disabled={opt.disabled}
                 />
               ))}
             </InputGroupWrap>

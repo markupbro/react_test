@@ -1,6 +1,6 @@
 .wrapper {
   position: relative;
-  margin-bottom: 10px;
+  // margin: 4px;
   .label {
     display: block;
     margin-bottom: 6px;
@@ -27,50 +27,46 @@
   }
 
   .error {
+    position: absolute;
+    bottom: -38%;
     color: #e53935;
     font-size: 13px;
     margin-top: 4px;
   }
   /* 크기 옵션 */
   &.sm {
-    .label {
-      font-size: 12px;
-    }
+    font-size: 12px;
     .input {
       height: 26px;
       font-size: 12px;
       padding: 4px 8px;
     }
     .error {
-      font-size: 12px;
+      font-size: inherit;
     }
   }
 
   &.md {
-    .label {
-      font-size: 13px;
-    }
+    font-size: 13px;
     .input {
       height: 32px;
       font-size: 14px;
       padding: 8px 12px;
     }
     .error {
-      font-size: 14px;
+      font-size: inherit;
     }
   }
 
   &.lg {
-    .label {
-      font-size: 14px;
-    }
+    font-size: 14px;
     .input {
       height: 40px;
       font-size: 16px;
       padding: 12px 16px;
     }
     .error {
-      font-size: 16px;
+      font-size: inherit;
     }
   }
   /* 상태 옵션 */
@@ -89,6 +85,13 @@
 
 .group-wrapper {
   display: flex;
+  align-items: baseline;
   gap: 8px;
   margin-bottom: 16px;
+  &.end {
+    align-items: flex-end;
+  }
+  button {
+    margin: 0;
+  }
 }

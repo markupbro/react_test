@@ -20,8 +20,8 @@ const Checkbox: React.FC<CheckboxProps> = ({
   id,
   className = "",
 }) => {
-  const disabledClass = disabled ? "disabled" : "";
-  console.log(styles);
+  // const disabledClass = disabled ? "disabled" : "";
+  // console.log(styles);
 
   return (
     <label
