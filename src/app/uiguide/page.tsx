@@ -696,6 +696,7 @@ const UiGuide = () => {
           </GridItem>
         </Grid>
       </section>
+
       <section className={styles.section}>
         <h2>Box</h2>
         <p>요소를 감싸는 Box 형태의 wrap 시스템입니다.</p>
@@ -731,6 +732,71 @@ const UiGuide = () => {
             </Box>
           </GridItem>
         </Grid>
+        {/* <input type="text" className="fluid" /> */}
+      </section>
+
+      <section className={styles.section}>
+        <h2>Form Example (grid base)</h2>
+        <div className={styles.parent}>
+          <label htmlFor="#" className={styles.label}>
+            label sdfsd sdfsdf sdf
+          </label>
+          <div className={styles.column}>
+            <input type="text" />
+          </div>
+          <label htmlFor="#" className={styles.label}>
+            label
+          </label>
+          <div className={styles.column}>
+            <input type="text" />
+          </div>
+          <label htmlFor="#" className={styles.label}>
+            label
+          </label>
+          <div className={styles.column}>
+            <input type="text" />
+          </div>
+          <label htmlFor="#" className={styles.label}>
+            label
+          </label>
+          <div className={styles.column}>
+            <input type="text" />
+          </div>
+          <label htmlFor="#" className={styles.label}>
+            label
+          </label>
+          <div className={styles.column}>
+            <input type="text" />
+          </div>
+          <label htmlFor="#" className={styles.label}>
+            label
+          </label>
+          <div className={styles.column}>
+            asdfasdfasdf sadf sadf sdaf sadf sd sdfsd asdf sadf Lorem ipsum
+            dolor sit amet consectetur adipisicing elit. Consequuntur beatae
+            facere excepturi quae fuga optio dolores labore nesciunt non
+            deserunt?
+          </div>
+          <label htmlFor="#" className={`${styles.label} ${styles.top}`}>
+            label
+          </label>
+          <div className={`${styles.column} ${styles.row}`}>
+            <input type="text" />
+          </div>
+          <div className={styles.row}>
+            <ul>
+              <li>sadfsadfs asdf sadf</li>
+              <li>sdfwef sd. sadf sa</li>
+              <li>wererw w wer err wer werwe r dfg df </li>
+            </ul>
+          </div>
+          <label htmlFor="#" className={styles.label}>
+            label
+          </label>
+          <div className={styles.column}>
+            <textarea name="" id=""></textarea>
+          </div>
+        </div>
       </section>
     </div>
   );
