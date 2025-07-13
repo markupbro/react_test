@@ -3,6 +3,8 @@
   // margin: 4px;
 
   .label {
+    position: absolute;
+    top: -18px;
     display: block;
     margin-bottom: 6px;
     font-weight: 600;
@@ -99,7 +101,7 @@
   }
   .error {
     position: absolute;
-    bottom: -38%;
+    bottom: -20px;
     color: #e53935;
     font-size: 13px;
     margin-top: 4px;
@@ -116,7 +118,7 @@
     font-size: inherit;
   }
   .dropdown {
-    top: 96%;
+    top: 25px;
   }
   .error {
     font-size: inherit;
@@ -130,7 +132,7 @@
     font-size: inherit;
   }
   .dropdown {
-    top: 95%;
+    top: 30px;
   }
   .error {
     font-size: inherit;

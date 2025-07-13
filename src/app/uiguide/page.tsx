@@ -176,6 +176,7 @@ const UiGuide = () => {
               onChange={(e) => setValue(e.target.value)}
               onBlur={() => setError(value ? "" : "이름을 입력해주세요")}
               error={error}
+              required
             />
           </GridItem>
           <GridItem span={6}>
@@ -188,6 +189,7 @@ const UiGuide = () => {
               onChange={(e) => setValue(e.target.value)}
               onBlur={() => setError(value ? "" : "이름을 입력해주세요")}
               error={error}
+              required
             />
           </GridItem>
           <GridItem span={6}>
@@ -210,7 +212,7 @@ const UiGuide = () => {
             <p className={styles["mt-2"]}>
               <b>Input Group</b>
             </p>
-            <InputGroupWrap alingItem="end">
+            <InputGroupWrap>
               <Input
                 id="ip1"
                 type="text"
@@ -290,6 +292,7 @@ const UiGuide = () => {
                 value={country3}
                 onChange={(value) => setCountry3(String(value))}
                 size="lg"
+                required
                 error={country3Error}
               />
             </InputGroupWrap>
@@ -297,7 +300,7 @@ const UiGuide = () => {
         </Grid>
         <Grid columns={18} gap={3}>
           <GridItem span={9}>
-            <InputGroupWrap alingItem="end">
+            <InputGroupWrap>
               <Input
                 id="name-input"
                 type="text"
@@ -307,12 +310,13 @@ const UiGuide = () => {
                 onChange={(e) => setValue(e.target.value)}
                 onBlur={() => setError(value ? "" : "이름을 입력해주세요")}
                 error={error}
+                required
               />
               <Button>Medium 버튼</Button>
             </InputGroupWrap>
           </GridItem>
           <GridItem span={9}>
-            <InputGroupWrap alingItem="end">
+            <InputGroupWrap>
               <CustomSelect
                 label="국가"
                 options={[
@@ -331,7 +335,7 @@ const UiGuide = () => {
             </InputGroupWrap>
           </GridItem>
           <GridItem span={9}>
-            <InputGroupWrap alingItem="end">
+            <InputGroupWrap>
               <Input
                 id="name-input"
                 type="text"
@@ -742,19 +746,74 @@ const UiGuide = () => {
             label sdfsd sdfsdf sdf
           </label>
           <div className={styles.column}>
-            <input type="text" />
+            <Input
+              id="name-input"
+              type="text"
+              // label="Large"
+              inputSize="md"
+              placeholder="이름을 입력하세요"
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              onBlur={() => setError(value ? "" : "이름을 입력해주세요")}
+              error={error}
+              required
+            />
           </div>
           <label htmlFor="#" className={styles.label}>
             label
           </label>
           <div className={styles.column}>
-            <input type="text" />
+            <CustomSelect
+              options={[
+                { value: "", label: "선택하세요" },
+                { value: "kr", label: "대한민국" },
+                { value: "us", label: "미국" },
+                { value: "jp", label: "일본", disabled: true },
+              ]}
+              value={country2}
+              onChange={(value) => setCountry2(String(value))}
+              size="md"
+              required
+              error={country2Error}
+            />
           </div>
           <label htmlFor="#" className={styles.label}>
             label
           </label>
           <div className={styles.column}>
-            <input type="text" />
+            <InputGroupWrap>
+              <Input
+                id="ip1"
+                type="text"
+                placeholder="입력하세요"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+                onBlur={() => setError(value ? "" : "입력해주세요")}
+                error={error}
+                required
+              />
+              <Input
+                id="ip2"
+                type="text"
+                placeholder="입력하세요"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+                onBlur={() => setError(value ? "" : "입력해주세요")}
+                error={error}
+                style={{ width: "250px" }}
+              />
+              <Input
+                id="ip3"
+                type="text"
+                placeholder="입력하세요"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+                onBlur={() => setError(value ? "" : "입력해주세요")}
+                error={error}
+                style={{ width: "360px" }}
+              />
+              <Button variant="secondary">Medium 버튼</Button>
+            </InputGroupWrap>
           </div>
           <label htmlFor="#" className={styles.label}>
             label
