@@ -79,6 +79,8 @@ const DropdownSearch: React.FC = () => {
     }
   };
 
+  console.log("selected", prevSelected);
+
   return (
     <div
       ref={wrapperRef}
@@ -99,7 +101,16 @@ const DropdownSearch: React.FC = () => {
           }}
           onClick={handleViewClick}
         >
-          <strong>{selected.name}</strong> - {selected.desc}
+          {selected ? (
+            <>
+              <strong>{selected.name}</strong> - {selected.desc}
+            </>
+          ) : (
+            <>
+              <strong>{prevSelected ? prevSelected.name : ""}</strong> -{" "}
+              {prevSelected ? prevSelected.desc : ""}
+            </>
+          )}
         </div>
       )}
       <input
@@ -122,6 +133,7 @@ const DropdownSearch: React.FC = () => {
         onBlur={handleBlur}
         autoComplete="off"
       />
+      <input type="hidden" value={input} />
       {showDropdown && filtered.length > 0 && (
         <ul
           style={{
