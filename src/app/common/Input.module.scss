@@ -1,12 +1,14 @@
 .wrapper {
   position: relative;
-
   .label {
     position: absolute;
     display: block;
     margin-bottom: 6px;
     font-weight: 600;
     color: #333;
+  }
+  &.no-label {
+    height: fit-content;
   }
 
   .requiredMark {

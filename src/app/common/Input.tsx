@@ -37,7 +37,7 @@ const Input: React.FC<InputProps> = ({
     <div
       className={`${styles.wrapper} ${styles[inputSize]} ${
         wrapperClassName || ""
-      }`}
+      } ${label ? "" : styles["no-label"]}`}
     >
       {label && (
         <label

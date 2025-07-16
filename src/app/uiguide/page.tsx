@@ -85,6 +85,16 @@ const UiGuide = () => {
         이 페이지는 UI 컴포넌트 사용법과 예시를 보여줍니다.
       </p>
 
+      <div className="inputdrop">
+        <input type="text" onChange={(e) => setValue(e.target.value)} />
+        <div className="droplist">
+          <ul>
+            <li>옵션 1</li>
+          </ul>
+        </div>
+        <div className="setter"></div>
+      </div>
+
       <section className={styles.section}>
         <h2>Button</h2>
         <p>사용자 클릭을 위한 기본 컴포넌트입니다.</p>
