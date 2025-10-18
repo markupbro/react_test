@@ -85,16 +85,6 @@ const UiGuide = () => {
         이 페이지는 UI 컴포넌트 사용법과 예시를 보여줍니다.
       </p>
 
-      <div className="inputdrop">
-        <input type="text" onChange={(e) => setValue(e.target.value)} />
-        <div className="droplist">
-          <ul>
-            <li>옵션 1</li>
-          </ul>
-        </div>
-        <div className="setter"></div>
-      </div>
-
       <section className={styles.section}>
         <h2>Button</h2>
         <p>사용자 클릭을 위한 기본 컴포넌트입니다.</p>
@@ -197,7 +187,7 @@ const UiGuide = () => {
               placeholder="이름을 입력하세요"
               value={value}
               onChange={(e) => setValue(e.target.value)}
-              onBlur={() => setError(value ? "" : "이름을 입력해주세요")}
+              onBlur={() => setError(value ? "" : "입력해주세요")}
               error={error}
               required
             />
@@ -211,7 +201,7 @@ const UiGuide = () => {
               placeholder="이름을 입력하세요"
               value={value}
               onChange={(e) => setValue(e.target.value)}
-              onBlur={() => setError(value ? "" : "이름을 입력해주세요")}
+              onBlur={() => setError(value ? "" : "입력해주세요")}
               error={error}
               required
             />
@@ -318,7 +308,7 @@ const UiGuide = () => {
                 placeholder="이름을 입력하세요"
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
-                onBlur={() => setError(value ? "" : "이름을 입력해주세요")}
+                onBlur={() => setError(value ? "" : "입력해주세요")}
                 error={error}
                 required
               />
@@ -439,6 +429,7 @@ const UiGuide = () => {
                 checked={selected.includes(opt.value)}
                 onChange={(checked) => handleChange(opt.value, checked)}
                 value={opt.value}
+                className="block"
               />
             ))}
             <div style={{ marginTop: 8 }}>
@@ -462,6 +453,16 @@ const UiGuide = () => {
               선택된 직업:{" "}
               {selected2.length > 0 ? selected2.join(", ") : "없음"}
             </div>
+          </GridItem>
+          <GridItem span={18}>
+            <p></p>
+            <b>Only Checkbox Element : </b>
+            <Checkbox
+              id="agree-checkbox4"
+              value={value}
+              checked={checked}
+              onChange={setChecked}
+            />
           </GridItem>
         </Grid>
       </section>
@@ -508,6 +509,7 @@ const UiGuide = () => {
                 value={opt.value}
                 name="radiogroup"
                 disabled={opt.disabled}
+                className="block"
               />
             ))}
             <div style={{ marginTop: 12 }}>
@@ -515,19 +517,17 @@ const UiGuide = () => {
             </div>
           </GridItem>
           <GridItem span={18}>
-            <InputGroupWrap>
-              {radioOptions2.map((opt) => (
-                <Radio
-                  key={opt.value}
-                  label={opt.label}
-                  checked={selected5 === opt.value}
-                  onChange={() => setSelected5(opt.value)}
-                  value={opt.value}
-                  name="radiogroup2"
-                  disabled={opt.disabled}
-                />
-              ))}
-            </InputGroupWrap>
+            {radioOptions2.map((opt) => (
+              <Radio
+                key={opt.value}
+                label={opt.label}
+                checked={selected5 === opt.value}
+                onChange={() => setSelected5(opt.value)}
+                value={opt.value}
+                name="radiogroup2"
+                disabled={opt.disabled}
+              />
+            ))}
             <div style={{ marginTop: 12 }}>
               선택된 과일: {selected5 || "없음"}
             </div>
@@ -791,39 +791,39 @@ const UiGuide = () => {
             label
           </label>
           <div className={styles.column}>
-            <InputGroupWrap>
-              <Input
-                id="ip1"
-                type="text"
-                placeholder="입력하세요"
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-                onBlur={() => setError(value ? "" : "입력해주세요")}
-                error={error}
-                required
-              />
-              <Input
-                id="ip2"
-                type="text"
-                placeholder="입력하세요"
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-                onBlur={() => setError(value ? "" : "입력해주세요")}
-                error={error}
-                style={{ width: "250px" }}
-              />
-              <Input
-                id="ip3"
-                type="text"
-                placeholder="입력하세요"
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-                onBlur={() => setError(value ? "" : "입력해주세요")}
-                error={error}
-                style={{ width: "360px" }}
-              />
-              <Button variant="secondary">Medium 버튼</Button>
-            </InputGroupWrap>
+            {/* <InputGroupWrap> */}
+            <Input
+              id="ip1"
+              type="text"
+              placeholder="입력하세요"
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              onBlur={() => setError(value ? "" : "입력해주세요")}
+              error={error}
+              required
+            />
+            <Input
+              id="ip2"
+              type="text"
+              placeholder="입력하세요"
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              onBlur={() => setError(value ? "" : "입력해주세요")}
+              error={error}
+              style={{ width: "250px" }}
+            />
+            <Input
+              id="ip3"
+              type="text"
+              placeholder="입력하세요"
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              onBlur={() => setError(value ? "" : "입력해주세요")}
+              error={error}
+              style={{ width: "360px" }}
+            />
+            <Button variant="secondary">Medium 버튼</Button>
+            {/* </InputGroupWrap> */}
           </div>
           <label htmlFor="#" className={styles.label}>
             label

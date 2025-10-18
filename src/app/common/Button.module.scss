@@ -1,5 +1,5 @@
 .button {
-  display: inline-block;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
 
@@ -97,7 +97,7 @@
 
 .text {
   display: inline-block;
-  vertical-align: middle;
+  // vertical-align: middle;
 }
 
 .loading {

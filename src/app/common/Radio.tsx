@@ -23,22 +23,24 @@ const Radio: React.FC<RadioProps> = ({
   className = "",
 }) => {
   return (
-    <label
-      className={`${styles.label} ${className} ${
-        disabled ? styles.disabled : ""
+    <div
+      className={`${styles.wrapper} ${
+        className === "block" ? styles.block : ""
       }`}
     >
-      <input
-        type="radio"
-        checked={checked}
-        onChange={onChange}
-        value={value}
-        name={name}
-        id={id}
-        disabled={disabled}
-      />
-      {label}
-    </label>
+      <label className={`${styles.label} ${disabled ? styles.disabled : ""}`}>
+        <input
+          type="radio"
+          checked={checked}
+          onChange={onChange}
+          value={value}
+          name={name}
+          id={id}
+          disabled={disabled}
+        />
+        {label}
+      </label>
+    </div>
   );
 };
 

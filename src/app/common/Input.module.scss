@@ -1,5 +1,7 @@
 .wrapper {
   position: relative;
+  display: inline-block;
+  min-width: 100px;
   .label {
     position: absolute;
     display: block;
