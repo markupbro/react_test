@@ -1,25 +1,25 @@
-import React, { useEffect, useRef } from 'react';
-import Map from 'ol/Map.js';
-import View from 'ol/View.js';
-import { fromLonLat } from 'ol/proj.js';
-import TileLayer from 'ol/layer/Tile.js';
-import VectorLayer from 'ol/layer/Vector.js';
-import VectorSource from 'ol/source/Vector.js';
-import XYZ from 'ol/source/XYZ.js';
-import GeoJSON from 'ol/format/GeoJSON.js';
-import Feature from 'ol/Feature.js';
-import Point from 'ol/geom/Point.js';
-import Style from 'ol/style/Style.js';
-import Icon from 'ol/style/Icon.js';
+import React, { useEffect, useRef } from "react";
+import Map from "ol/Map.js";
+import View from "ol/View.js";
+import { fromLonLat } from "ol/proj.js";
+import TileLayer from "ol/layer/Tile.js";
+import VectorLayer from "ol/layer/Vector.js";
+import VectorSource from "ol/source/Vector.js";
+import XYZ from "ol/source/XYZ.js";
+import GeoJSON from "ol/format/GeoJSON.js";
+import Feature from "ol/Feature.js";
+import Point from "ol/geom/Point.js";
+import Style from "ol/style/Style.js";
+import Icon from "ol/style/Icon.js";
 
 // 컬러 스케일 6단계
 const colors = [
-  '#ffffcc',
-  '#a1dab4',
-  '#41b6c4',
-  '#2c7fb8',
-  '#253494',
-  '#081d58',
+  "#ffffcc",
+  "#a1dab4",
+  "#41b6c4",
+  "#2c7fb8",
+  "#253494",
+  "#081d58",
 ];
 
 // SVG 아이콘 생성 함수
@@ -58,35 +58,35 @@ export default function RealTimeMap() {
       [129.3114, 35.5395], // 울산
       [127.0346, 37.6523], // 춘천
       [128.5912, 35.8889], // 대구
-      [126.632, 33.489],   // 제주
-      [127.385, 36.350],   // 세종
+      [126.632, 33.489], // 제주
+      [127.385, 36.35], // 세종
       [126.4478, 34.8756], // 광주
     ];
 
     coords.forEach((coord, i) => {
       features.push({
-        type: 'Feature',
+        type: "Feature",
         geometry: {
-          type: 'Point',
+          type: "Point",
           coordinates: coord,
         },
         properties: {
           name: `도시 ${i + 1}`,
           value: Math.random() * 100, // 0~100 임의 값
-          link: 'https://example.com', // 링크 예시
+          link: "https://example.com", // 링크 예시
         },
       });
     });
 
     return {
-      type: 'FeatureCollection',
+      type: "FeatureCollection",
       features,
     };
   };
 
   // 스타일 함수 (value에 따라 색상 다르게)
   const styleFunction = (feature) => {
-    const value = feature.get('value');
+    const value = feature.get("value");
     // 0~100 범위로 가정
     const step = getStep(value, 0, 100);
 
@@ -107,7 +107,7 @@ export default function RealTimeMap() {
   // 피처 업데이트 함수
   const updateFeatures = (geojsonData) => {
     const newFeatures = format.readFeatures(geojsonData, {
-      featureProjection: 'EPSG:3857',
+      featureProjection: "EPSG:3857",
     });
 
     vectorSourceRef.current.clear();
@@ -128,7 +128,7 @@ export default function RealTimeMap() {
       layers: [
         new TileLayer({
           source: new XYZ({
-            url: 'https://{a-c}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
+            url: "https://{a-c}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
             maxZoom: 19,
           }),
         }),
@@ -146,19 +146,19 @@ export default function RealTimeMap() {
     updateFeatures(generateRandomData());
 
     // 마커 클릭 시 새 탭 열기
-    map.on('singleclick', (evt) => {
+    map.on("singleclick", (evt) => {
       map.forEachFeatureAtPixel(evt.pixel, (feature) => {
-        const link = feature.get('link');
+        const link = feature.get("link");
         if (link) {
-          window.open(link, '_blank');
+          window.open(link, "_blank");
         }
       });
     });
 
     // 마우스 포인터 변경 (pointer on feature)
-    map.on('pointermove', (evt) => {
+    map.on("pointermove", (evt) => {
       const hit = map.hasFeatureAtPixel(evt.pixel);
-      map.getTargetElement().style.cursor = hit ? 'pointer' : '';
+      map.getTargetElement().style.cursor = hit ? "pointer" : "";
     });
 
     // 실시간 데이터 업데이트 시뮬레이션 (5초마다)
@@ -176,10 +176,7 @@ export default function RealTimeMap() {
 
   return (
     <div>
-      <div
-        ref={mapRef}
-        style={{ width: '100%', height: '600px' }}
-      />
+      <div ref={mapRef} style={{ width: "100%", height: "600px" }} />
     </div>
   );
 }

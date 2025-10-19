@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "classnames": "^2.5.1",
+    "json5": "^2.2.3",
     "next": "15.3.4",
+    "ol": "^10.6.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "sass": "^1.89.2",
